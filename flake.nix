@@ -10,7 +10,7 @@
     # nixpkgs.unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -23,20 +23,23 @@
   in {
     nixosConfigurations = {
       # replace with hostname
-      hostname = { inherit system; };
-
-      modules = [
-        ./nixos/configuration.nix
-      ];
+      hostname = {
+        specialArgs = { inherit inputs system; };
+        modules = [
+          ./nixos/configuration.nix
+        ];
+      };
     };
 
-    # use username
-    homeConfigurations."username" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+    homeConfigurations = {
+      # use username
+      username = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-      modules = [
-        ./home-manager/home.nix
-      ];
+        modules = [
+          ./home-manager/home.nix
+        ];
+      };
     };
   };
 }
