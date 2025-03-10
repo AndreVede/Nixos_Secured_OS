@@ -3,8 +3,6 @@
   home.username = username;
   home.homeDirectory = /home/username;
 
-  home.stateVersion = "24.11";
-
   home.packages = with pkgs; [
     hello
   ];
@@ -16,5 +14,27 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
+
+  programs.git = {
+    enable = true;
+    userName = "my_git_username";
+    userMail = "my_git_username@mail.com";
+    aliases = {
+      fe = "fetch origin";
+      pushme = "push -u origin HEAD";
+    };
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    # zsh variables
+    envExtra = ''
+      
+    '';
+  };
+  
+  home.stateVersion = "24.11";
   programs.home-manager.enable = true;
 }
