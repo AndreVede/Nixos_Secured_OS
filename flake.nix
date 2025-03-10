@@ -30,16 +30,5 @@
         ];
       };
     };
-
-    homeConfigurations = {
-      # use username
-      username = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        modules = [
-          ./home-manager/home.nix
-        ];
-      };
-    };
   };
 }
