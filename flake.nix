@@ -17,7 +17,7 @@
         vim
       ];
 
-      ShellHook = ''
+      shellHook = ''
         echo "Hello shell"
       '';
     };
