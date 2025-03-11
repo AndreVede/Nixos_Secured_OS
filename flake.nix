@@ -21,6 +21,17 @@
       };
     };
   in {
+    # Shell to build
+    devShells.${system}.default = pkgs.mkShell {
+      buildInputs = with pkgs; [
+        nixos-rebuild
+        home-manager
+      ];
+      shellHook = ''
+        echo "Ready to build"
+      '';
+    };
+
     nixosConfigurations = {
       # replace with hostname
       hostname = nixpkgs.lib.nixosSystem {
