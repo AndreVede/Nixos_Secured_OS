@@ -19,7 +19,7 @@
   programs.git = {
     enable = true;
     userName = "my_git_username";
-    userMail = "my_git_username@mail.com";
+    userEmail = "my_git_username@mail.com";
     aliases = {
       fe = "fetch origin";
       pushme = "push -u origin HEAD";
