@@ -129,6 +129,7 @@
     policycoreutils
     vim
     git
+    home-manager
   ];
 
   # Example for GNOME with packages to exclude
