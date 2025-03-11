@@ -144,7 +144,7 @@
     users = {
       # use username here
       username = import ../home-manager/home.nix;
-      };
+    };
   };
 
   # Security Layer

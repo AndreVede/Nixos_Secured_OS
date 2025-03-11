@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
-  home.username = username;
+  # your username
+  home.username = "username";
   home.homeDirectory = /home/username;
 
   home.packages = with pkgs; [
