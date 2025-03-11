@@ -42,14 +42,14 @@
     };
 
     # With this flake, you can now apply home-manager alone
-    #homeManagerConfigurations = {
+    homeManagerConfigurations = {
       # replace with username
-    #  username = home-manager.lib.homeManagerConfiguration {
-    #    inherit pkgs;
-    #    modules = [
-    #      ./home-manager/home.nix
-    #    ];
-    #  };
-    #};
+      username = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home-manager/home.nix
+        ];
+      };
+    };
   };
 }
