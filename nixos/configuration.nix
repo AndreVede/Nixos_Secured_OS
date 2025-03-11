@@ -124,6 +124,8 @@
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   # packages to install (what you want)
   environment.systemPackages = with pkgs; [
     # policycoreutils is for load_policy, fixfiles, setfiles, setsebool, semodile, and sestatus.
