@@ -106,7 +106,7 @@
 
   # Enable sound with pipewire (you can user other lib)
   hardware.pulseaudio.enable = false;
-  security.rkit.enable = true;
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;

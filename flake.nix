@@ -25,7 +25,6 @@
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
         nixos-rebuild
-        home-manager
       ];
       shellHook = ''
         echo "Ready to build"
