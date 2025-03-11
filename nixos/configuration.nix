@@ -114,12 +114,12 @@
     pulse.enable = true;
   };
 
-  # TODO home-manager is maybe responsible of that configuration
   users.users = {
     username = {
       isNormalUser = true;
       description = "My Long Name";
       extraGroups = [ "networkmanager" "wheel" ];
+      shell = pkgs.zsh;
       initialPassword = "toto";
     };
   };
@@ -131,6 +131,7 @@
     # policycoreutils is for load_policy, fixfiles, setfiles, setsebool, semodile, and sestatus.
     policycoreutils
     vim
+    nvim
     git
     home-manager
   ];
