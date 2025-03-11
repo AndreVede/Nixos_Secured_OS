@@ -23,7 +23,7 @@
   in {
     nixosConfigurations = {
       # replace with hostname
-      hostname = {
+      hostname = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs system; };
         modules = [
           ./nixos/configuration.nix
