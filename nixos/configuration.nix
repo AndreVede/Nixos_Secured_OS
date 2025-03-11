@@ -26,6 +26,24 @@
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
+      # SELinux
+      "security=selinux"
+    ];
+    kernelPatches = [
+      # SELinux
+      {
+        name = "selinux-config";
+        patch = null;
+        extraConfig = ''
+                SECURITY_SELINUX y
+                SECURITY_SELINUX_BOOTPARAM n
+                SECURITY_SELINUX_DISABLE n
+                SECURITY_SELINUX_DEVELOP y
+                SECURITY_SELINUX_AVC_STATS y
+                SECURITY_SELINUX_CHECKREQPROT_VALUE 0
+                DEFAULT_SECURITY_SELINUX n
+              '';
+      }
     ];
     loader = {
       timeout = 0;
@@ -108,6 +126,9 @@
 
   # packages to install
   environment.systemPackages = with pkgs; [
+    # policycoreutils is for load_policy, fixfiles, setfiles, setsebool, semodile, and sestatus.
+    policycoreutils
+    vim
     cowsay
     lolcat
   ];
@@ -124,6 +145,21 @@
       # use username here
       username = import ../home-manager/home.nix;
       };
+  };
+
+  # Security Layer
+  # Firewall
+  networking.firewall = {
+    # enable or disable firewall
+    enable = true;
+
+    # Open ports in the Firewall
+    # allowedTCPPorts = [];
+    # allowedUDPPorts = [];
+  };
+  # build systemd with SELinux support so it loads policy at boot and supports file labelling
+  systemd.package = pkgs.systemd.override {
+    withSelinux = true;
   };
   
   nix = {
