@@ -67,7 +67,7 @@
 
   # Select internationalisation properties.
   i18n = let
-    locale = "fr_FR.UTF-8"
+    locale = "fr_FR.UTF-8";
   in
   {
     defaultLocale = locale;
