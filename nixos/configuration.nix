@@ -123,13 +123,12 @@
     };
   };
 
-  # packages to install
+  # packages to install (what you want)
   environment.systemPackages = with pkgs; [
     # policycoreutils is for load_policy, fixfiles, setfiles, setsebool, semodile, and sestatus.
     policycoreutils
     vim
-    cowsay
-    lolcat
+    git
   ];
 
   # Example for GNOME with packages to exclude
@@ -160,7 +159,18 @@
   systemd.package = pkgs.systemd.override {
     withSelinux = true;
   };
-  
+
+  # Enable the OpenSSH daemon. (disable it if no use)
+  services.openssh = {
+    enable = true;
+    settings = {
+      X11Forwarding = true;
+      PermitRootLogin = "no"; # disable root login
+      PasswordAuthentication = false; # disable password login
+    };
+    openFirewall = true;
+  };
+
   nix = {
     # Auto Clean
     gc = {
