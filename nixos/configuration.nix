@@ -66,9 +66,10 @@
   time.timeZone = "Europe/Paris";
 
   # Select internationalisation properties.
-  let
-    locale = "fr_FR.UTF-8";
-  in i18n = {
+  i18n = let
+    locale = "fr_FR.UTF-8"
+  in
+  {
     defaultLocale = locale;
     extraLocaleSettings = {
       LC_ADDRESS = locale;
