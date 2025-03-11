@@ -8,9 +8,9 @@
     hello
   ];
 
-  home.file = [
+  home.file = {
    # .bashrc, ...
-  ];
+  };
 
   home.sessionVariables = {
     EDITOR = "vim";
