@@ -125,12 +125,26 @@
       username = import ../home-manager/home.nix;
       };
   };
+  
+  nix = {
+    # Auto Clean
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
 
-  # Experimental features
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+    settings = {
+      # Data optimization
+      auto-optimise-store = true;
+
+      # Experimental features
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+  };
 
   system.stateVersion = "24.11";
 }
